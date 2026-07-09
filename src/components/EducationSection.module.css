@@ -1,0 +1,132 @@
+.wrapper {
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: var(--space-lg);
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-md) 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-align: left;
+  transition: color var(--transition);
+}
+
+.trigger:hover {
+  color: var(--color-accent);
+}
+
+.icon {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  line-height: 1;
+}
+
+.panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height var(--transition), opacity var(--transition);
+}
+
+.panel.open {
+  max-height: 12rem;
+  opacity: 1;
+  padding-bottom: var(--space-md);
+}
+
+.panel.panelGuide.open {
+  max-height: 28rem;
+}
+
+.panel p {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.guideEntry {
+  padding-bottom: 0;
+}
+
+.guideHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-xs) var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.guideLabel {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.guideDuration {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.guideDuration::before {
+  content: '·';
+  margin-right: var(--space-xs);
+}
+
+.guideBlock + .guideBlock {
+  margin-top: var(--space-sm);
+}
+
+.guideHeading {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-bottom: 0.35rem;
+}
+
+.guideBlock ul {
+  list-style: none;
+  padding: 0;
+}
+
+.guideBlock li {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  padding-left: 0.75rem;
+  position: relative;
+}
+
+.guideBlock li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-border);
+}
+
+.guideBlock li + li {
+  margin-top: 0.25rem;
+}

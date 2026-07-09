@@ -1,0 +1,23 @@
+:root {
+  --color-bg: #f7f4ef;
+  --color-text: #1c1917;
+  --color-text-muted: #78716c;
+  --color-accent: #8b7355;
+  --color-nrem: #c4b5a0;
+  --color-rem: #6b8f71;
+  --color-border: #e7e0d5;
+  --color-accent-soft: rgba(139, 115, 85, 0.12);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+
+  --max-width: 40rem;
+  --transition: 250ms ease;
+}

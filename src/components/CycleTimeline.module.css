@@ -1,0 +1,100 @@
+.wrapper {
+  margin-bottom: var(--space-xl);
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.baseline {
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.tick {
+  stroke: var(--color-border);
+  stroke-width: 1;
+  opacity: 0.6;
+}
+
+.hitArea {
+  fill: transparent;
+  cursor: default;
+}
+
+.arc {
+  stroke-width: 1;
+  fill: none;
+  opacity: 0.45;
+  transition: opacity var(--transition), stroke-width var(--transition);
+  pointer-events: none;
+}
+
+.arc.nrem {
+  stroke: var(--color-nrem);
+}
+
+.arc.rem {
+  stroke: var(--color-rem);
+}
+
+.arc.highlighted {
+  opacity: 0.85;
+  stroke-width: 1.25;
+}
+
+.arc.active {
+  opacity: 1;
+  stroke-width: 1.5;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-sm);
+  min-height: 1.25rem;
+}
+
+.legend {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.nrem {
+  color: var(--color-nrem);
+}
+
+.rem {
+  color: var(--color-rem);
+}
+
+.nrem::before,
+.rem::before {
+  content: '';
+  display: inline-block;
+  width: 1rem;
+  height: 1px;
+  margin-right: 0.4em;
+  vertical-align: middle;
+  background: currentColor;
+}
+
+.caption {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.caption span {
+  color: var(--color-text);
+}
+
+.captionMuted {
+  opacity: 0.7;
+}
