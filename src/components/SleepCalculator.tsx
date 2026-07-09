@@ -29,7 +29,7 @@ export function SleepCalculator() {
 
   useEffect(() => {
     setSelectedCycles(recommended.cycles);
-  }, [recommended.cycles]);
+  }, [mode, time, latency, recommended.cycles]);
 
   const timeLabel =
     mode === 'bedtime' ? 'Hora de acostarte' : 'Hora de despertar';

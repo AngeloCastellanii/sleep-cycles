@@ -5,13 +5,13 @@
   width: 100%;
   border-bottom: 1px solid var(--color-border);
   transition: background-color var(--transition);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .row:first-child {
   border-top: 1px solid var(--color-border);
 }
 
-.row:hover,
 .row.selected {
   background-color: var(--color-accent-soft);
 }
@@ -22,7 +22,14 @@
   flex-direction: column;
   gap: 0.2rem;
   padding: var(--space-md) 0;
+  padding-right: var(--space-sm);
   text-align: left;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.selectArea:active {
+  opacity: 0.85;
 }
 
 .row.recommended .time {
@@ -42,14 +49,6 @@
   color: var(--color-text-muted);
 }
 
-.side {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.25rem;
-  padding: var(--space-md) 0;
-}
-
 .label {
   font-size: 0.75rem;
   letter-spacing: 0.04em;
@@ -62,14 +61,36 @@
 }
 
 .copy {
+  flex-shrink: 0;
   font-size: 0.75rem;
   color: var(--color-text-muted);
-  opacity: 0;
-  transition: opacity var(--transition);
-  padding: 0;
+  padding: var(--space-xs) 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.row:hover .copy,
-.copy:focus-visible {
-  opacity: 1;
+/* Desktop: copiar al pasar el cursor; móvil: siempre visible */
+@media (hover: hover) and (pointer: fine) {
+  .row:hover {
+    background-color: var(--color-accent-soft);
+  }
+
+  .copy {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+  }
+
+  .row:hover .copy,
+  .copy:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .copy {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }

@@ -13,7 +13,9 @@ interface CycleRowProps {
 export function CycleRow({ result, modeLabel, selected, onSelect }: CycleRowProps) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = async () => {
+  const handleCopy = async (event: React.MouseEvent) => {
+    event.stopPropagation();
+    event.preventDefault();
     try {
       await navigator.clipboard.writeText(result.time);
       setCopied(true);
@@ -38,13 +40,16 @@ export function CycleRow({ result, modeLabel, selected, onSelect }: CycleRowProp
         <span className={styles.meta}>
           {result.cycles} ciclos · {formatDuration(result.totalSleepMinutes)}
         </span>
-      </button>
-      <div className={styles.side}>
         <span className={styles.label}>{result.label}</span>
-        <button type="button" className={styles.copy} onClick={handleCopy}>
-          {copied ? 'Copiado' : 'Copiar'}
-        </button>
-      </div>
+      </button>
+      <button
+        type="button"
+        className={styles.copy}
+        onClick={handleCopy}
+        aria-label={`Copiar hora ${result.time}`}
+      >
+        {copied ? 'Copiado' : 'Copiar'}
+      </button>
     </div>
   );
 }
