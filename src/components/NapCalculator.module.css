@@ -1,0 +1,122 @@
+.calculator {
+  width: 100%;
+}
+
+.results {
+  margin-bottom: var(--space-2xl);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.note {
+  margin-top: var(--space-md);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.row:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.row.selected {
+  background-color: var(--color-accent-soft);
+}
+
+.selectArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: var(--space-md) 0;
+  padding-right: var(--space-sm);
+  text-align: left;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.selectArea:active {
+  opacity: 0.85;
+}
+
+.row.recommended .time {
+  color: var(--color-accent);
+}
+
+.time {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  transition: color var(--transition);
+}
+
+.meta {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.tagline {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.row.recommended .tagline {
+  color: var(--color-accent);
+}
+
+.copy {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  padding: var(--space-xs) 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .row:hover {
+    background-color: var(--color-accent-soft);
+  }
+
+  .copy {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+  }
+
+  .row:hover .copy,
+  .copy:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .copy {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

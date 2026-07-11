@@ -50,7 +50,7 @@
 }
 
 .panel.open {
-  max-height: 12rem;
+  max-height: 20rem;
   opacity: 1;
   padding-bottom: var(--space-md);
 }
