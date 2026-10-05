@@ -8,8 +8,10 @@
 
 .heading {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-optical-sizing: auto;
+  font-size: 1.35rem;
   font-weight: 400;
+  letter-spacing: -0.02em;
   margin-bottom: var(--space-xs);
   color: var(--color-text);
 }
@@ -78,9 +80,11 @@
 
 .time {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-optical-sizing: auto;
+  font-size: 1.85rem;
   font-variant-numeric: tabular-nums;
-  line-height: 1.1;
+  letter-spacing: -0.03em;
+  line-height: 1;
   transition: color var(--transition);
 }
 

@@ -9,17 +9,15 @@ import styles from './App.module.css';
 
 const INTRO_KEY = 'ciclos-intro-seen';
 
-const HEADER: Record<AppView, { eyebrow: string; title: string; subtitle: string; footer: string }> = {
+const HEADER: Record<AppView, { eyebrow: string; subtitle: string; footer: string }> = {
   night: {
     eyebrow: 'NREM · REM',
-    title: 'Ciclos de Sueño',
     subtitle:
       'Calcula cuándo despertar o acostarte para completar ciclos enteros y levantarte con claridad.',
     footer: 'Cada ciclo dura ~90 min · Incluye tiempo para quedarte dormido',
   },
   nap: {
     eyebrow: 'Descanso breve',
-    title: 'Siesta perfecta',
     subtitle:
       'Elige cuánto durar para despertar renovado, sin el aturdimiento del sueño profundo.',
     footer: 'La mejor siesta dura 10–20 min · Ideal a primera hora de la tarde',
@@ -57,8 +55,20 @@ function App() {
             Cómo funciona
           </button>
         </div>
-        <h1 className={styles.title}>{copy.title}</h1>
-        <p className={styles.subtitle}>{copy.subtitle}</p>
+        <div key={view} className={styles.headingCopy}>
+          <h1 className={styles.title}>
+            {view === 'night' ? (
+              <>
+                Ciclos de <em>Sueño</em>
+              </>
+            ) : (
+              <>
+                Siesta <em>perfecta</em>
+              </>
+            )}
+          </h1>
+          <p className={styles.subtitle}>{copy.subtitle}</p>
+        </div>
       </header>
 
       <div className={styles.toggleWrap}>

@@ -43,9 +43,11 @@
 
 .time {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-optical-sizing: auto;
+  font-size: 1.85rem;
   font-variant-numeric: tabular-nums;
-  line-height: 1.1;
+  letter-spacing: -0.03em;
+  line-height: 1;
   transition: color var(--transition);
 }
 

@@ -19,6 +19,11 @@ body {
   line-height: 1.6;
   color: var(--color-text);
   background-color: var(--color-bg);
+  background-image: radial-gradient(
+    80rem 28rem at 50% -12rem,
+    rgba(196, 181, 160, 0.42),
+    transparent 68%
+  );
   min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
 }
