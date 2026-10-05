@@ -95,6 +95,11 @@ export function LatencyControl({ value, onChange }: LatencyControlProps) {
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
         className={styles.slider}
+        style={
+          {
+            '--fill': `${((value - MIN_LATENCY_MIN) / (MAX_LATENCY_MIN - MIN_LATENCY_MIN)) * 100}%`,
+          } as React.CSSProperties
+        }
         aria-valuemin={MIN_LATENCY_MIN}
         aria-valuemax={MAX_LATENCY_MIN}
         aria-valuenow={value}

@@ -62,7 +62,9 @@ export function CycleTimeline({ cycles, highlightedCycle }: CycleTimelineProps) 
         className={styles.svg}
         role="img"
         aria-label={`${cycles} ciclos de sueño alternando NREM y REM`}
-        onMouseLeave={() => setActiveId(null)}
+        onPointerLeave={(event) => {
+          if (event.pointerType === 'mouse') setActiveId(null);
+        }}
       >
         {Array.from({ length: cycles - 1 }, (_, i) => {
           const x = ((i + 1) / cycles) * WIDTH;
@@ -98,7 +100,8 @@ export function CycleTimeline({ cycles, highlightedCycle }: CycleTimelineProps) 
                 width={arc.x2 - arc.x1}
                 height={HEIGHT}
                 className={styles.hitArea}
-                onMouseEnter={() => setActiveId(arc.id)}
+                onPointerEnter={() => setActiveId(arc.id)}
+                onPointerDown={() => setActiveId(arc.id)}
               />
               <path
                 d={arc.d}
@@ -130,7 +133,7 @@ export function CycleTimeline({ cycles, highlightedCycle }: CycleTimelineProps) 
             </>
           ) : (
             <span className={styles.captionMuted}>
-              {cycles} {cycles === 1 ? 'ciclo' : 'ciclos'}
+              {cycles} {cycles === 1 ? 'ciclo' : 'ciclos'} · explora una fase
             </span>
           )}
         </p>

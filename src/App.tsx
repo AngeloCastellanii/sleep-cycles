@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { SleepCalculator } from './components/SleepCalculator';
 import { EducationSection } from './components/EducationSection';
 import { NapCalculator } from './components/NapCalculator';
 import { NapEducation } from './components/NapEducation';
 import { ViewToggle, type AppView } from './components/ViewToggle';
+import { IntroGuide } from './components/IntroGuide';
 import styles from './App.module.css';
+
+const INTRO_KEY = 'ciclos-intro-seen';
 
 const HEADER: Record<AppView, { eyebrow: string; title: string; subtitle: string; footer: string }> = {
   night: {
@@ -23,37 +26,66 @@ const HEADER: Record<AppView, { eyebrow: string; title: string; subtitle: string
   },
 };
 
+function hasSeenIntro(): boolean {
+  try {
+    return localStorage.getItem(INTRO_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
 function App() {
   const [view, setView] = useState<AppView>('night');
+  const [introOpen, setIntroOpen] = useState(() => !hasSeenIntro());
   const copy = HEADER[view];
+
+  const closeIntro = useCallback(() => {
+    try {
+      localStorage.setItem(INTRO_KEY, '1');
+    } catch {
+      /* almacenamiento no disponible */
+    }
+    setIntroOpen(false);
+  }, []);
 
   return (
     <div className={styles.app}>
       <header className={styles.header}>
-        <p className={styles.eyebrow}>{copy.eyebrow}</p>
+        <div className={styles.headerTop}>
+          <p className={styles.eyebrow}>{copy.eyebrow}</p>
+          <button type="button" className={styles.help} onClick={() => setIntroOpen(true)}>
+            Cómo funciona
+          </button>
+        </div>
         <h1 className={styles.title}>{copy.title}</h1>
         <p className={styles.subtitle}>{copy.subtitle}</p>
       </header>
 
-      <ViewToggle view={view} onChange={setView} />
+      <div className={styles.toggleWrap}>
+        <ViewToggle view={view} onChange={setView} />
+      </div>
 
       <main className={styles.main}>
-        {view === 'night' ? (
-          <>
-            <SleepCalculator />
-            <EducationSection />
-          </>
-        ) : (
-          <>
-            <NapCalculator />
-            <NapEducation />
-          </>
-        )}
+        <div key={view} className={styles.stage}>
+          {view === 'night' ? (
+            <>
+              <SleepCalculator />
+              <EducationSection />
+            </>
+          ) : (
+            <>
+              <NapCalculator />
+              <NapEducation />
+            </>
+          )}
+        </div>
       </main>
 
       <footer className={styles.footer}>
         <p>{copy.footer}</p>
       </footer>
+
+      {introOpen ? <IntroGuide onClose={closeIntro} /> : null}
     </div>
   );
 }

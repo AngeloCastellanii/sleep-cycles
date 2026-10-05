@@ -74,15 +74,16 @@ export function EducationSection() {
               </button>
               <div
                 id={`panel-${section.id}`}
-                className={`${styles.panel} ${isOpen ? styles.open : ''} ${isCycle ? styles.panelGuide : ''}`}
+                className={`${styles.panel} ${isOpen ? styles.open : ''}`}
                 role="region"
-                hidden={!isOpen}
               >
-                {isCycle ? (
-                  <CycleGuideContent entry={section.entry} />
-                ) : (
-                  <p>{section.content}</p>
-                )}
+                <div className={styles.panelInner} inert={!isOpen}>
+                  {isCycle ? (
+                    <CycleGuideContent entry={section.entry} />
+                  ) : (
+                    <p>{section.content}</p>
+                  )}
+                </div>
               </div>
             </div>
           );

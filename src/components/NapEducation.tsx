@@ -73,15 +73,16 @@ export function NapEducation() {
               </button>
               <div
                 id={`nap-panel-${section.id}`}
-                className={`${styles.panel} ${isOpen ? styles.open : ''} ${isGuide ? styles.panelGuide : ''}`}
+                className={`${styles.panel} ${isOpen ? styles.open : ''}`}
                 role="region"
-                hidden={!isOpen}
               >
-                {isGuide ? (
-                  <NapGuideContent entry={section.entry} />
-                ) : (
-                  <p>{section.content}</p>
-                )}
+                <div className={styles.panelInner} inert={!isOpen}>
+                  {isGuide ? (
+                    <NapGuideContent entry={section.entry} />
+                  ) : (
+                    <p>{section.content}</p>
+                  )}
+                </div>
               </div>
             </div>
           );

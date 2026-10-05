@@ -43,12 +43,14 @@ export function SleepCalculator() {
         cycles={selectedCycles}
         highlightedCycle={selectedCycles}
       />
-      <ResultsList
-        results={results}
-        mode={mode}
-        selectedCycles={selectedCycles}
-        onSelectCycles={setSelectedCycles}
-      />
+      <div key={mode} className={styles.swap}>
+        <ResultsList
+          results={results}
+          mode={mode}
+          selectedCycles={selectedCycles}
+          onSelectCycles={setSelectedCycles}
+        />
+      </div>
     </div>
   );
 }

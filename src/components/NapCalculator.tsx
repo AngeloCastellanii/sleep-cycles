@@ -78,6 +78,9 @@ export function NapCalculator() {
         <h2 id="nap-results-heading" className={styles.heading}>
           Pon la alarma a las
         </h2>
+        <p className={styles.hint}>
+          Elige una duración. La recomendada va en color tierra.
+        </p>
         <div className={styles.list}>
           {results.map((result) => (
             <NapRow

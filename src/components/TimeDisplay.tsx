@@ -7,6 +7,11 @@ interface TimeDisplayProps {
   label: string;
 }
 
+function currentTimeValue(): string {
+  const now = new Date();
+  return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+}
+
 export function TimeDisplay({ value, onChange, label }: TimeDisplayProps) {
   const inputId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -35,6 +40,12 @@ export function TimeDisplay({ value, onChange, label }: TimeDisplayProps) {
           aria-label={label}
         />
       </button>
+      <div className={styles.actions}>
+        <p className={styles.hint}>Pulsa la hora para cambiarla</p>
+        <button type="button" className={styles.now} onClick={() => onChange(currentTimeValue())}>
+          Usar hora actual
+        </button>
+      </div>
     </div>
   );
 }

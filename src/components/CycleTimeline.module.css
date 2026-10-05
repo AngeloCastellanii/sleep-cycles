@@ -21,7 +21,7 @@
 
 .hitArea {
   fill: transparent;
-  cursor: default;
+  cursor: pointer;
 }
 
 .arc {

@@ -6,8 +6,15 @@
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 400;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-xs);
   color: var(--color-text);
+}
+
+.hint {
+  margin-bottom: var(--space-md);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
 }
 
 .list {

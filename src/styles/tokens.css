@@ -19,5 +19,7 @@
   --space-2xl: 4.5rem;
 
   --max-width: 40rem;
-  --transition: 250ms ease;
+  --max-width-wide: 68rem;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition: 280ms var(--ease-out);
 }

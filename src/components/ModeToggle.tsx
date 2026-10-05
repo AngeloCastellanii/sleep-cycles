@@ -6,9 +6,9 @@ interface ModeToggleProps {
   onChange: (mode: SleepMode) => void;
 }
 
-const MODES: { value: SleepMode; label: string }[] = [
-  { value: 'bedtime', label: 'Me voy a dormir' },
-  { value: 'waketime', label: 'Quiero despertar a las…' },
+const MODES: { value: SleepMode; label: string; short: string }[] = [
+  { value: 'bedtime', label: 'Me voy a dormir', short: 'Me duermo' },
+  { value: 'waketime', label: 'Quiero despertar a las…', short: 'Despertar a las…' },
 ];
 
 export function ModeToggle({ mode, onChange }: ModeToggleProps) {
@@ -25,7 +25,8 @@ export function ModeToggle({ mode, onChange }: ModeToggleProps) {
           className={mode === item.value ? styles.active : undefined}
           onClick={() => onChange(item.value)}
         >
-          {item.label}
+          <span className={styles.labelLong}>{item.label}</span>
+          <span className={styles.labelShort}>{item.short}</span>
         </button>
       ))}
       <span

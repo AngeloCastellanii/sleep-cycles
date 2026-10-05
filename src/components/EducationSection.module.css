@@ -23,7 +23,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--space-md);
   width: 100%;
+  min-height: 2.75rem;
   padding: var(--space-md) 0;
   font-family: var(--font-display);
   font-size: 1rem;
@@ -36,6 +38,7 @@
 }
 
 .icon {
+  flex-shrink: 0;
   font-family: var(--font-body);
   font-size: 1.25rem;
   color: var(--color-text-muted);
@@ -43,20 +46,25 @@
 }
 
 .panel {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height var(--transition), opacity var(--transition);
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms var(--ease-out);
 }
 
 .panel.open {
-  max-height: 20rem;
-  opacity: 1;
-  padding-bottom: var(--space-md);
+  grid-template-rows: 1fr;
 }
 
-.panel.panelGuide.open {
-  max-height: 28rem;
+.panelInner {
+  overflow: hidden;
+  min-height: 0;
+  opacity: 0;
+  transition: opacity 220ms var(--ease-out);
+}
+
+.panel.open .panelInner {
+  opacity: 1;
+  padding-bottom: var(--space-md);
 }
 
 .panel p {
@@ -129,4 +137,19 @@
 
 .guideBlock li + li {
   margin-top: 0.25rem;
+}
+
+@media (min-width: 960px) {
+  .wrapper {
+    position: sticky;
+    top: var(--space-md);
+    max-height: calc(100dvh - var(--space-xl));
+    overflow: auto;
+    padding-top: 0;
+    padding-left: var(--space-xl);
+    border-top: none;
+    border-left: 1px solid var(--color-border);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
 }

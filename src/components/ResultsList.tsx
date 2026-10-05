@@ -23,6 +23,9 @@ export function ResultsList({
       <h2 id="results-heading" className={styles.heading}>
         {heading}
       </h2>
+      <p className={styles.hint}>
+        Pulsa una hora para ver el ciclo. La recomendada va en color tierra.
+      </p>
       <div className={styles.list}>
         {results.map((result) => (
           <CycleRow
